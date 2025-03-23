@@ -37,7 +37,8 @@
 <body>
     <h1>Retro Trivia Game</h1>
     <div class="question" id="question"></div>
-    <button class="button" onclick="showAnswer()">Flip for Answer</button>
+    <button class="button" id="flipButton" onclick="showAnswer()">Flip for Answer</button>
+    <button class="button" id="refreshButton" onclick="refreshPage()" style="display: none;">Try Another Question</button>
     <div class="answer" id="answer"></div>
 
     <script>
@@ -146,7 +147,14 @@
         }
 
         function showAnswer() {
-            document.getElementById("answer").style.display = "block";
+    document.getElementById("answer").style.display = "block"; // Show the answer
+    document.getElementById("flipButton").style.display = "none"; // Hide the flip button
+    document.getElementById("refreshButton").style.display = "inline-block"; // Show the refresh button
+}
+
+
+        function refreshPage() {
+            window.location.reload();
         }
 
         window.onload = function() {
