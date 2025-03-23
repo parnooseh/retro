@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Trivia Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .question {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .answer {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Retro Trivia Game</h1>
+    <div class="question" id="question"></div>
+    <button class="button" onclick="showAnswer()">Flip for Answer</button>
+    <div class="answer" id="answer"></div>
+
+    <script>
+        const californiaQuestions = [
+            "Which state is home to Silicon Valley?",
+            "Which state has Disneyland?",
+            "Which state is home to the Golden Gate Bridge?",
+            "Which state has Death Valley?",
+            "Which state is home to Hollywood?",
+            "Which state produces the most wine in the U.S.?",
+            "Which state has Joshua Tree National Park?",
+            "Which state is home to Big Sur?",
+            "Which state has the San Andreas Fault?",
+            "Which state is home to Lake Tahoe?",
+            "Which state hosts Coachella Valley Music Festival?",
+            "Which state has Sequoia National Park?",
+            "Which state is the birthplace of the tech industry?",
+            "Which state has Yosemite National Park?",
+            "Which state is known for Napa Valley wine?",
+            "Which state has the famous Route 1 coastline?",
+            "Which state is home to Los Angeles?",
+            "Which state has the Mojave Desert?",
+            "Which state leads in avocado production?",
+            "Which state has the Hearst Castle?"
+        ];
+
+        const pennsylvaniaQuestions = [
+            "Which state has the Liberty Bell?",
+            "Which state is home to Hershey's Chocolate World?",
+            "Which state was the site of the Battle of Gettysburg?",
+            "Which state has Punxsutawney Phil, the groundhog?",
+            "Which state is known for its Amish communities?",
+            "Which state is home to Pittsburgh's steel industry history?",
+            "Which state is home to the first U.S. capital, Philadelphia?",
+            "Which state has Fallingwater, the Frank Lloyd Wright house?",
+            "Which state is known for its soft pretzels and cheesesteaks?",
+            "Which state is home to the Pocono Mountains?",
+            "Which state hosted the signing of the Declaration of Independence?",
+            "Which state is home to the University of Pennsylvania?",
+            "Which state has Valley Forge National Historical Park?",
+            "Which state is home to the Gettysburg Address site?",
+            "Which state is known for its coal mining history?",
+            "Which state has the Andy Warhol Museum?",
+            "Which state is home to the Philadelphia Museum of Art steps (Rocky Steps)?",
+            "Which state has the Pennsylvania Turnpike?",
+            "Which state produces the most mushrooms in the U.S.?",
+            "Which state is nicknamed the Keystone State?"
+        ];
+
+        const oregonQuestions = [
+            "Which state is known for Crater Lake National Park?",
+            "Which state is home to Mount Hood?",
+            "Which state is known for its coastline with Haystack Rock?",
+            "Which state has the Columbia River Gorge?",
+            "Which state is famous for its Pinot Noir wine?",
+            "Which state is home to Powell's City of Books?",
+            "Which state has the Tillamook Cheese Factory?",
+            "Which state is home to the Oregon Trail?",
+            "Which state has the Painted Hills?",
+            "Which state is known for its craft beer scene?",
+            "Which state is home to the Willamette Valley?",
+            "Which state has Silver Falls State Park?",
+            "Which state is known for its rainy weather?",
+            "Which state has the Deschutes River?",
+            "Which state is home to the Cascade Range?",
+            "Which state has the International Rose Test Garden?",
+            "Which state is home to the Oregon Shakespeare Festival?",
+            "Which state is famous for its coastal lighthouses?",
+            "Which state has Multnomah Falls?",
+            "Which state is home to the city of Portland?"
+        ];
+
+        const newMexicoQuestions = [
+            "Which state is home to the historic Route 66 town of Santa Fe?",
+            "Which state has White Sands National Park?",
+            "Which state is known for its chili peppers?",
+            "Which state is home to the alien-themed Roswell?",
+            "Which state has Carlsbad Caverns National Park?",
+            "Which state is home to the Albuquerque International Balloon Fiesta?",
+            "Which state is known for its Pueblo-style architecture?",
+            "Which state has the Taos Pueblo, a UNESCO site?",
+            "Which state is nicknamed the Land of Enchantment?",
+            "Which state has the Rio Grande running through it?",
+            "Which state is home to Georgia O'Keeffe's art legacy?",
+            "Which state has Bandelier National Monument?",
+            "Which state is known for its adobe houses?",
+            "Which state is home to the Gila Cliff Dwellings?",
+            "Which state has the Valles Caldera National Preserve?",
+            "Which state celebrates Hatch Chile season?",
+            "Which state has the Chaco Culture National Historical Park?",
+            "Which state is home to Los Alamos National Laboratory?",
+            "Which state has the Sandia Mountains?",
+            "Which state has the Very Large Array radio telescope?"
+        ];
+
+        const allQuestions = [
+            ...californiaQuestions.map(q => ({ question: q, answer: "California" })),
+            ...pennsylvaniaQuestions.map(q => ({ question: q, answer: "Pennsylvania" })),
+            ...oregonQuestions.map(q => ({ question: q, answer: "Oregon" })),
+            ...newMexicoQuestions.map(q => ({ question: q, answer: "New Mexico" }))
+        ];
+
+        function getRandomQuestion() {
+            const randomIndex = Math.floor(Math.random() * allQuestions.length);
+            return allQuestions[randomIndex];
+        }
+
+        function showAnswer() {
+            document.getElementById("answer").style.display = "block";
+        }
+
+        window.onload = function() {
+            const trivia = getRandomQuestion();
+            document.getElementById("question").textContent = trivia.question;
+            document.getElementById("answer").textContent = trivia.answer;
+        };
+    </script>
+</body>
+</html>
